@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTwoFactorColumnsToUsersTable extends Migration
+class AddNewcolumnsToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,12 @@ class AddTwoFactorColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('two_factor_secret')
-                    ->after('password', 100)
-                    ->nullable();
-
-            $table->text('two_factor_recovery_codes')
-                    ->after('two_factor_secret')
-                    ->nullable();
+            $table->string('ap_paterno', 50)->after('name');
+            $table->string('ap_materno', 50)->after('name');
+            $table->string('username', 120)->after('email');
+            $table->unsignedBigInteger('status_id')->after('username');
+            $table->foreign('status_id')->references('id')->on('status')
+                  ->onDelete('cascade');
         });
     }
 
@@ -32,7 +31,7 @@ class AddTwoFactorColumnsToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('two_factor_secret', 'two_factor_recovery_codes');
+            //
         });
     }
 }
