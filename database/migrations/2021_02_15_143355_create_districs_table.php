@@ -18,15 +18,10 @@ class CreateDistricsTable extends Migration
             $table->string('codigo', 6);
             $table->string('distric', 50);
 
-            $table->unsignedBigInteger('province_id');
-            $table->unsignedBigInteger('departament_id');
+            $table->string('province_id',6);
+            $table->string('departament_id',6);
 
-            $table->foreign('departament_id')->references('id')->on('departaments');
-            $table->foreign('province_id')->references('id')->on('provinces');
-
-            
-
-            $table->timestamps();
+           
         });
     }
 

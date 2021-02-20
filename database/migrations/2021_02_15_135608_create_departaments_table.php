@@ -16,9 +16,8 @@ class CreateDepartamentsTable extends Migration
         Schema::create('departaments', function (Blueprint $table) {
             $table->id();
             $table->string('codigo', 6);
-            $table->string('departament', 50)->unique();           
-            $table->string('slug');
-            $table->timestamps();
+            $table->string('departament', 50)->unique();                      
+         
         });
     }
 

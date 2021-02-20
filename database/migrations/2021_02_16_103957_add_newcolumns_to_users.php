@@ -14,12 +14,10 @@ class AddNewcolumnsToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('ap_paterno', 50)->after('name');
-            $table->string('ap_materno', 50)->after('name');
-            $table->string('username', 120)->after('email');
-            $table->unsignedBigInteger('status_id')->after('username');
-            $table->foreign('status_id')->references('id')->on('status')
-                  ->onDelete('cascade');
+            $table->string('ap_materno', 50)->after('name')->nullable();
+            $table->string('ap_paterno', 50)->after('name')->nullable();            
+            $table->string('username', 120)->after('email_verified_at')->nullable();
+           
         });
     }
 

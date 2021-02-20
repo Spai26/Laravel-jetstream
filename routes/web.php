@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\User\UserHomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+/*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth'])->group(function () {  
+    Route::get('user', UserHomeController::class)->name('user.home')->middleware('auth');
+});
+
+ */
+

@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Statu;
+use Illuminate\Support\Facades\DB;
 
-class StatuSeeder extends Seeder
+class StatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +15,19 @@ class StatuSeeder extends Seeder
     public function run()
     {
         //Estado para los usuarios
-        Statu::created(['name'=>'Activo']);
-        Statu::created(['name'=>'Bloqueado']);
-        Statu::created(['name'=>'Vacaciones']);
+        DB::table('Status')->insert([
+            'name' => 'Activo',           
+        ]);
+
+        DB::table('Status')->insert([
+            'name' => 'Bloqueado',           
+        ]);
+
+        DB::table('Status')->insert([
+            'name' => 'Vacaciones',           
+        ]);
+
+        
 
         /*/estado para los documentos
         Statu::created(['name'=>'Aprobado']);
