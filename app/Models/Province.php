@@ -8,15 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Province extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
 
+    protected $fillable = ['departament_id', 'name'];
 
-    public function departament(){
-        return $this->belongsTo('App\Models\Departament');
+    public function departament()
+    {
+        return $this->belongsTo('App\Models\Departament', 'departament_id');
     }
-
-    
-    public function districs(){
-        return $this->hasMany('App\Models\Disctric');
-    }
+  
 }

@@ -14,13 +14,17 @@
                     logo
                 </div>
                 <div>
-                    1
+                
                 </div>
                 <div>
                    <a href="{{ route('login') }}">Ingresar</a>
                    <a href="{{ route('register') }}">Registrar</a>
                 </div>
             </header>
+            <div>
+                
+                <livewire:colegios />
+            </div>
         </main>
        
     </body>

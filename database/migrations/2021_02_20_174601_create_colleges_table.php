@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNivelsTable extends Migration
+class CreateCollegesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateNivelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('nivels', function (Blueprint $table) {
+        Schema::create('colleges', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 60);
+            $table->string('name');
+            $table->unsignedBigInteger('district_id');
+            $table->foreign('district_id')->references('id')->on('districs');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateNivelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nivels');
+        Schema::dropIfExists('colleges');
     }
 }

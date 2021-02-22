@@ -14,12 +14,12 @@ class CreateProvincesTable extends Migration
     public function up()
     {
         Schema::create('provinces', function (Blueprint $table) {
-            $table->id();
-            $table->string('codigo', 6);
-            $table->string('province', 50);
-
-            $table->string('departament_id',6);            
+            $table->id();         
+            $table->foreignId('departament_id')->constrained();  
+            $table->string('name', 60);
             
+            $table->timestamp('created_ad')->useCurrent();
+            $table->timestamp('updated_ad')->useCurrent();               
         });
     }
 

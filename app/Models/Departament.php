@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Departament extends Model
 {
     use HasFactory;
-
-    protected $guarded = ['id'];
-
-    public function provinces(){
-        return $this->HasMany('App\Models\Province');
+   
+    protected $fillable = ['name'];
+    
+    public function provinces()
+    {
+        return $this->HasMany('App\Models\Province', 'departament_id');
     }
 }
